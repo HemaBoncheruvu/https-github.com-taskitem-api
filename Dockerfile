@@ -4,9 +4,10 @@ WORKDIR /app
 
 COPY . .
 
-RUN cd taskitem && ./mvnw clean package -DskipTests
-
+RUN chmod +x taskitem/mvnw \
+    && cd taskitem \
+    && ./mvnw clean package -DskipTests
 
 EXPOSE 8080
 
-CMD ["java", "-jar", "target/taskitem-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "taskitem/target/taskitem-0.0.1-SNAPSHOT.jar"]
